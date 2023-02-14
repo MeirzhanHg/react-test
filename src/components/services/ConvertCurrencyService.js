@@ -1,5 +1,5 @@
-class ConvertCurrency {
-    getResource = async (to, from, amount) => {
+const ConvertCurrency = () => {
+    const getResource = async (to, from, amount) => {
         const res = await fetch(`https://api.apilayer.com/exchangerates_data/convert?to=${to}&from=${from}&amount=${amount}`, {
             method: 'GET',
             redirect: 'follow',
@@ -8,6 +8,8 @@ class ConvertCurrency {
             }
         })
 
+        console.log(res)
+
         if(!res.ok) {
             throw new Error(`Could not fetch, status: ${res.status}`);
         }
@@ -15,7 +17,7 @@ class ConvertCurrency {
         return await res.json()
     }   
 
-    getRandomValue = async () =>{
+    const getRandomValue = async () => {
         const res = await fetch('https://www.random.org/integers/?num=1&min=-50&max=50&col=1&base=10&format=plain&rnd=new')
 
         if(!res.ok) {
@@ -24,7 +26,11 @@ class ConvertCurrency {
 
         return await res.json()
     }
-}
 
+    return {
+        getResource,
+        getRandomValue
+    }
+}
 
 export default ConvertCurrency;

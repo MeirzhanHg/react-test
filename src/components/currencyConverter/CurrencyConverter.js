@@ -10,20 +10,20 @@ const CurrencyConverter = (props) => {
     const [currency, setCurrency] = useState('usd')
     const [current, setCurrent] = useState(100)
 
-    const convertValue = new ConvertCurrency();
+    const {getResource} = ConvertCurrency();
 
     useEffect(() => {
         if(current) {
             getCurrency(currency);
         } else {
             reset()
-        }        
-
+        }
     }, [current])
 
     const getCurrency = (curr) => {
-        convertValue.getResource('KZT', curr, current)
+        getResource('KZT', curr, current)
                 .then(res => {
+                    console.log(res)
                     setCurrency(res.query.from)
                     setConvert((res.result.toFixed(0)))
                 })

@@ -70,13 +70,12 @@ const TodoList = () => {
         return arr.filter(item => item.name.toLowerCase() >= item.name.toLowerCase().match(search.toLowerCase()));
     }
     
-    const items = searchName(list)
+    const newItems = renderNames(searchName(list))
 
-    const newItems = renderNames(items)
 
     return (
-        <div className='container'>
-            <div className='list'>
+        <div className='list'>
+            <div>
                 <div>List Name</div>
                 <div>
                     <input
@@ -86,13 +85,14 @@ const TodoList = () => {
                         type="text" />
                 </div>
 
-                <ul className='list'>
+                <ul>
                     {newItems}
                 </ul>
-                
-                <button className='button' onClick={onChangeList}>Добавить</button>
-                <button className='button' onClick={onDelete}>Удалить</button>
-                <button className='button' onClick={onAllDelete}>Удалить весь список</button>
+                <div>
+                    <button className='button' onClick={onChangeList}>Добавить</button>
+                    <button className='button' onClick={onDelete}>Удалить</button>
+                    <button className='button' onClick={onAllDelete}>Удалить весь список</button>
+                </div>                
             </div>
             
         </div>

@@ -11,7 +11,7 @@ function App() {
     return (
         <>
             {/* <Slider /> */}
-            {/* <CurrencyConverter number={100} /> */}
+            <CurrencyConverter number={100} />
             {/* <AppHucks /> */}
             {/* <SearchFilter/> */}
             {/* <TransitionGroup/> */}
