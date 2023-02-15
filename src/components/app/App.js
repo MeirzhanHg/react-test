@@ -5,14 +5,16 @@ import Slider from '../slider/Slider';
 import TransitionGroup from '../transitionGroup/TransitionGroup';
 import CustomForm from '../form/Form';
 import TodoList from '../todoList/TodoList';
+import TestJsonPlaceholder from '../testJsonPlaceholder/TestJsonPlaceholder';
 
 function App() {
 
     return (
         <>
+            <TestJsonPlaceholder/>
             {/* <Slider /> */}
-            <CurrencyConverter number={100} />
-            {/* <AppHucks /> */}
+            {/* <CurrencyConverter number={100} /> */}
+            {/* <AppHooks /> */}
             {/* <SearchFilter/> */}
             {/* <TransitionGroup/> */}
             {/* <CustomForm/> */}

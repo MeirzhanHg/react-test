@@ -6,7 +6,7 @@ import './appHooks.scss'
 function useCountChange(initialValue) {
   const [counter, setCounter] = useState(initialValue);
 
-  const randomValue = new ConvertCurrencyService()
+  const {getRandomValue} =  ConvertCurrencyService()
 
   const onChange = (val) => {
     setCounter(counter => counter + val)
@@ -14,7 +14,7 @@ function useCountChange(initialValue) {
 
   const randomNumber = () => {
     console.log('random')
-    randomValue.getRandomValue().then(changeValue);
+    getRandomValue().then(changeValue);
   }
 
   const changeValue = (val) => {
