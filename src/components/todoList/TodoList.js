@@ -72,7 +72,6 @@ const TodoList = () => {
     
     const newItems = renderNames(searchName(list))
 
-
     return (
         <div className='list'>
             <div>
@@ -96,7 +95,6 @@ const TodoList = () => {
             </div>
             
         </div>
-
     )
 }
 
