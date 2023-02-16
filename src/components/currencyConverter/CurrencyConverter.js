@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 
-import ConvertCurrency from '../services/ConvertCurrencyService';
+import ConvertCurrency from '../../services/ApiService';
 import './currencyConverter.scss'
 
 const CurrencyConverter = (props) => {

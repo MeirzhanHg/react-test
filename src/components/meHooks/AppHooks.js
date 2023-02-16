@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ConvertCurrencyService from '../services/ConvertCurrencyService';
+import ConvertCurrencyService from '../../services/ApiService';
 
 import './appHooks.scss'
 

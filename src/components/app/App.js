@@ -5,20 +5,20 @@ import Slider from '../slider/Slider';
 import TransitionGroup from '../transitionGroup/TransitionGroup';
 import CustomForm from '../form/Form';
 import TodoList from '../todoList/TodoList';
-import TestJsonPlaceholder from '../testJsonPlaceholder/TestJsonPlaceholder';
+import TestApi from '../testApi/TestApi';
 
 function App() {
 
     return (
         <>
-            <TestJsonPlaceholder/>
+            <TestApi/>
             {/* <Slider /> */}
             {/* <CurrencyConverter number={100} /> */}
             {/* <AppHooks /> */}
             {/* <SearchFilter/> */}
             {/* <TransitionGroup/> */}
             {/* <CustomForm/> */}
-            {/* <TodoList/> */}
+            <TodoList/>
         </>
 
     );

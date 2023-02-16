@@ -1,4 +1,5 @@
-const ConvertCurrency = () => {
+const apiService = () => {
+
     const request = async (url) => {
         const res = await fetch(url, {
             method: 'GET',
@@ -23,8 +24,6 @@ const ConvertCurrency = () => {
             }
         })
 
-        console.log(res)
-
         if(!res.ok) {
             throw new Error(`Could not fetch, status: ${res.status}`);
         }
@@ -42,19 +41,19 @@ const ConvertCurrency = () => {
         return await res.json()
     }
 
-    const getAllPosts = async (title) => {
-        const res = await fetch(`https://jsonplaceholder.typicode.com/${title}`)
+    const getAllData = async () => {
+        const res = await fetch('http://localhost:3000/results')
 
         if(!res.ok) {
             throw new Error(`Could not fetch, status: ${res.status}, url: ${res.url}`)
         }
 
-        return await res.json()
+        const data = await res.json();
+        return data[0].friends;
     }
 
     const getAllPhotos = async () => {
         const res = await request('https://api.unsplash.com/photos?page=1')
-
         return res.map(item => {
             return item.urls
         })
@@ -63,9 +62,9 @@ const ConvertCurrency = () => {
     return {
         getResource,
         getRandomValue,
-        getAllPosts,
+        getAllData,
         getAllPhotos
     }
 }
 
-export default ConvertCurrency;
+export default apiService;
