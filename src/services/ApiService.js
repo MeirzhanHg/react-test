@@ -1,5 +1,5 @@
-const apiService = () => {
 
+const apiService = () => {
     const request = async (url) => {
         const res = await fetch(url, {
             method: 'GET',
@@ -65,6 +65,7 @@ const apiService = () => {
         getAllData,
         getAllPhotos
     }
+
 }
 
 export default apiService;

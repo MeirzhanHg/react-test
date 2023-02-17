@@ -6,6 +6,7 @@ import TransitionGroup from '../transitionGroup/TransitionGroup';
 import CustomForm from '../form/Form';
 import TodoList from '../todoList/TodoList';
 import TestApi from '../testApi/TestApi';
+import TestRedux from '../testRedux/TestRedux';
 
 function App() {
 
@@ -18,7 +19,9 @@ function App() {
             {/* <SearchFilter/> */}
             {/* <TransitionGroup/> */}
             {/* <CustomForm/> */}
-            <TodoList/>
+            {/* <TodoList/> */}
+            {/* <TestRedux/> */}
+           
         </>
 
     );

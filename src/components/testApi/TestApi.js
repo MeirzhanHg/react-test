@@ -18,46 +18,32 @@ const style = {
 
 const TestApi = () => {
     const [data, setData] = useState([])
-    const [photos, setPhotos] = useState([])
     const [search, setSearch] = useState('')
 
     const [loading, setLoading] = useState(true)
-
+    const [error, setError] = useState(false)
+    
     useEffect(() => {
         onRequest()
-        console.log('use effect')
     }, [])
 
     const { getAllData, getAllPhotos } = apiService();
 
-    const onRequest = () => {
-        getAllData().then(res => {
-            setPostsLoaded(res)
-        }).catch(err => {
+    async function onRequest () {
+        try {
+            const promis = [getAllData(), getAllPhotos()]
+            const [out1, out2] = await Promise.all(promis)
+            getAllDataPhotos(out1, out2)
+        } catch(err) {
             console.log(err)
-        })
-        getAllPhotos().then(res => {
-            setPhotosLoaded(res)
-        }).catch(err => {
-            console.log(err)
-        })
-        
+            setError(true)
+            setLoading(false)
+        }
     }
 
-    const setPostsLoaded = (data) => {
-        setData(data)
-    }
-
-    const setPhotosLoaded = (dataPhotos) => {
-        setPhotos(dataPhotos)
-    }
-
-    const setDataPhotos = () => {
-        setData(data => data.map((item, i) => {
-            if(item.id == i) {
-                return {...item, ...photos[i]}
-            }
-            return item
+    function getAllDataPhotos (data1, data2) {
+        setData(data1.map((item, i) => {
+            return {...item, ...data2[i]}
         }))
         setLoading(false)
     }
@@ -93,9 +79,10 @@ const TestApi = () => {
         )
     }
 
-    if(data.length && photos.length && loading) setDataPhotos()
+    // if(data.length && photos.length && loading) setDataPhotos()
     
-    const load = loading ? <div>Loading...</div> : null
+    const load = loading ? <div>Loading...</div> : null;
+    const err = error ? <div>Error!</div> : null
     const newItems = renderPosts(setNewText(data))
 
     return (
@@ -107,6 +94,7 @@ const TestApi = () => {
                     type="text"
                     id="inputPassword5"
                 />
+                {err}
                 {load}
                 {newItems}
             </Container>
