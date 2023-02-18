@@ -24,21 +24,47 @@ const TestApi = () => {
     const [error, setError] = useState(false)
     
     useEffect(() => {
-        onRequest()
+        getData();
+        // onRequest()
     }, [])
 
     const { getAllData, getAllPhotos } = apiService();
 
-    async function onRequest () {
-        try {
-            const promis = [getAllData(), getAllPhotos()]
-            const [out1, out2] = await Promise.all(promis)
-            getAllDataPhotos(out1, out2)
-        } catch(err) {
-            console.log(err)
-            setError(true)
-            setLoading(false)
+    //  1 способ получение всех данных из сервера с помощью async/await
+    // async function onRequest () {
+    //     try {
+    //         const promis = [getAllData(), getAllPhotos()]
+    //         console.log(promis)
+    //         const [out1, out2] = await Promise.all(promis)
+    //         getAllDataPhotos(out1, out2)
+    //     } catch(err) {
+    //         console.log(err)
+    //         setError(true)
+    //         setLoading(false)
+    //     }
+    // }
+
+    //  2 способ получение всех данных из сервера с помощью Promise
+    const onRequest = new Promise((resolve, reject) => {
+            try {
+                const promis = [getAllData(), getAllPhotos()]
+
+                Promise.all(promis).then(res => resolve(res))
+
+            } catch(err) {
+                setError(true)
+                setLoading(false)
+                reject(err)
+            }
         }
+    )
+
+    function getData() {
+        onRequest
+        .then(res => {     
+            getAllDataPhotos(res[0], res[1])
+        })
+        .catch(() => setError(true))
     }
 
     function getAllDataPhotos (data1, data2) {
@@ -78,8 +104,6 @@ const TestApi = () => {
             </div>
         )
     }
-
-    // if(data.length && photos.length && loading) setDataPhotos()
     
     const load = loading ? <div>Loading...</div> : null;
     const err = error ? <div>Error!</div> : null

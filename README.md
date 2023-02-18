@@ -1,1 +1,1 @@
-# Git and Github course
+# Work with React from home

@@ -21,7 +21,7 @@
   },
   "scripts": {
     "dev": "concurrently npm:watch:*",
-    "watch:json": "npx json-server generated.json",
+    "watch:json": "npx json-server db.json",
     "watch:react-app": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",

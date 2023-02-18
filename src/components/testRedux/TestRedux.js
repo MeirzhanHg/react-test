@@ -1,24 +1,21 @@
-import { createStore } from "redux"
+// import { useEffect, useState } from "react"
+// // import { createStore } from "redux"
 
-const initialState = 0
+// // const store = createStore(reducer)
 
-const reducer = (state = 0, action) => {
-    switch(action.type) {
-        case "INC":
-            return state + 1
-        default:
-            return state
-    }
-}
+// const TestRedux = () => {
 
-const store = createStore(reducer)
+//     const [counter, setCounter] = useState(0)
 
-console.log(store.getState())
+//     return (
+//         <>
+//             <h1>Redux</h1>
+//             <div>{initialState.value}</div>
+//             <button onClick={() => store.dispatch({type: 'INC'})}>INC</button>
+//             <button onClick={() => store.dispatch({type: 'DEC'})}>DEC</button>
+//             <button onClick={() => store.dispatch({type: 'RND'})}>RND</button>
+//         </>
+//     )
+// }
 
-
-
-const TestRedux = () => {
-    return <h1>Redux</h1>
-}
-
-export default TestRedux;
+// export default TestRedux;
